@@ -46,7 +46,7 @@ int main() {
     this.post("/snippets/:id/stars", (schema, request) => {
       let id = request.params.id;
       let snippet = schema.snippets.find(id);
-      snippet.update({ starCount: snippet.starCount - 1 });
+      snippet.update({ starCount: snippet.starCount + 1 });
 
       return schema.snippets.all();
     });
