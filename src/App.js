@@ -33,7 +33,7 @@ function Snippet({ id, name, value, starCount }) {
     <div className="SnippetContainer">
       <h2>
         {name}
-        <button>
+        <button className="SnippetStarBtn">
           <span className="SnippetStarBtn__symbol">⭐️</span>
           {starCount}
         </button>
