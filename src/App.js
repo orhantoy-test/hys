@@ -43,7 +43,7 @@ function Snippet({ id, name, value, starCount, onStarClick }) {
     <div className="SnippetContainer">
       <h2>
         {name}
-        <button onClick={onStarClick}>
+        <button className="SnippetStarBtn" onClick={onStarClick}>
           <span className="SnippetStarBtn__symbol">⭐️</span>
           {starCount}
         </button>
