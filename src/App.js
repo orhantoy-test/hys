@@ -10,6 +10,12 @@ function App() {
       .then((json) => setSnippets({ status: "success", data: json.snippets }));
   }, []);
 
+  const clickedStar = (snippetId) => {
+    fetch(`/api/snippets/${snippetId}/stars`, { method: "POST" })
+      .then((res) => res.json())
+      .then((json) => setSnippets({ status: "success", data: json.snippets }));
+  };
+
   return (
     <div>
       <header>
@@ -22,18 +28,22 @@ function App() {
 
       {snippets.status === "success" &&
         snippets.data.map((snippet) => (
-          <Snippet key={snippet.id} {...snippet} />
+          <Snippet
+            key={snippet.id}
+            onStarClick={() => clickedStar(snippet.id)}
+            {...snippet}
+          />
         ))}
     </div>
   );
 }
 
-function Snippet({ id, name, value, starCount }) {
+function Snippet({ id, name, value, starCount, onStarClick }) {
   return (
     <div className="SnippetContainer">
       <h2>
         {name}
-        <button>
+        <button onClick={onStarClick}>
           <span className="SnippetStarBtn__symbol">⭐️</span>
           {starCount}
         </button>
